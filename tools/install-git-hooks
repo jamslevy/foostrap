@@ -1,0 +1,2 @@
+#!/bin/bash
+cp ./tools/git-hooks/* ./.git/hooks/

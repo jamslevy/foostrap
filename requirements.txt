@@ -1,0 +1,12 @@
+Flask
+Flask-DebugToolbar
+Jinja2
+Werkzeug
+blinker
+distribute
+envparse
+flask-sslify
+httplib2
+nose
+pep8
+wsgiref

@@ -1,0 +1,21 @@
+#/bin/bash
+#
+# setup-app <app-name>
+# Setup a foostrap app:
+#
+#     1. Renames the app
+#     2. Install git hooks
+#     3. Fetches assets (JQuery, Bootstrap)
+#
+
+if [[ -z $1 ]]; then
+  echo "setup-app <app-name>"
+  exit 1
+fi
+
+OLD_APP=myapp
+NEW_APP=$1
+
+./tools/rename-app $OLD_APP $NEW_APP
+./tools/install-git-hooks
+./tools/fetch-assets $NEW_APP

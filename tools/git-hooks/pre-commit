@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if pep8 .
+then
+    :
+else
+    echo
+    echo "*** Fix PEP-8 failures before commiting! ***"
+    exit 1
+fi
+
+if nosetests
+then
+    :
+else
+    echo
+    echo "*** Fix tests before commiting! ***"
+    exit 1
+fi

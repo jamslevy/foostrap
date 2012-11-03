@@ -1,0 +1,29 @@
+#/bin/bash
+#
+# Renames foostrap app
+#
+# rename-app <old-app-name> <new-app-name>
+#
+
+function global_replace() {
+  MATCH=$1
+  REPLACEMENT=$2
+  EXTENSION=`uuidgen`
+
+  # BSD-style sed requires use of backup extension
+  find . -name "*.py" | xargs sed -i.$EXTENSION "s/$MATCH/$REPLACEMENT/g"
+
+  # Remove backup files
+  find . -name "*.$EXTENSION" | xargs rm
+}
+
+if [[ -z $1 || -z $2 ]]; then
+  echo "rename-app <old-app-name> <new-app-name>"
+  exit 1
+fi
+
+OLD_NAME=$1
+NEW_NAME=$2
+
+git mv $OLD_NAME $NEW_NAME
+global_replace $OLD_NAME $NEW_NAME

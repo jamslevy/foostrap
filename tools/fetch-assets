@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# Fetch latest JQuery and Twitter Bootstrap
+#
+
+fetch_bootstrap() {
+  # Create staging area
+  rm -rf .latest_bootstrap
+  mkdir .latest_bootstrap
+  cd .latest_bootstrap
+
+  # Fetch latest
+  curl -O http://twitter.github.com/bootstrap/assets/bootstrap.zip || exit 1
+  unzip bootstrap.zip || exit 1
+
+  # Copy
+  cp -v bootstrap/css/* ../$APP/static/css/ || exit 1
+  cp -v bootstrap/js/* ../$APP/static/js/ || exit 1
+  cp -v bootstrap/img/* ../$APP/static/img/ || exit 1
+
+  # Teardown staging area
+  cd ..
+  rm -rf .latest_bootstrap
+}
+
+
+fetch_jquery() {
+  APP=$1
+  JQUERY_FILE=jquery.min.js
+  curl http://code.jquery.com/$JQUERY_FILE > $APP/static/js/$JQUERY_FILE
+}
+
+if [[ -z $1 ]]; then
+  echo "fetch-assets <app-name>"
+  exit 1
+fi
+
+APP=$1
+fetch_jquery $APP
+fetch_bootstrap $APP

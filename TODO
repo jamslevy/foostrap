@@ -1,0 +1,49 @@
+TODO
+====
+
+* Move code to github
+
+DONE
+====
+
+* Add setup-project script that fetches-assets and installs-git-hooks and
+  renames project and does global replace
+* Add fetch-assets script which fetches both bootstrap and jquery latest
+* Add git-pre-commit hooks
+* Include requirements
+  * Include Flask-SSLify
+  * Include Flask-DebugToolbar
+  * Include envparse
+  * Include blinker
+* Include README.rst
+* Has MANIFEST.in and setup.py
+* Has runserver.py
+* Add Procfile
+* Include etc/env.sample, and docs/env.rst
+* .gitignore
+* app/
+    __init__.py
+    models/
+      __init__.py
+    views/
+      __init__.py
+      tests/
+    static/
+    templates/
+* View imports should go at the bottom of app/__init__.py file
+* img directory and Add .gitkeep to img/ directory
+* Add myapp.js
+* Add default layout.html
+* Add hello template
+* Include bootstrap, don't include files directly, just a script to fetch them
+ and place them in the appropriate location.
+
+
+WISHLIST
+========
+
+* include tool to deploy to heroku in one-shot (set env-ariables, etc)
+* Add Context handling
+* I18N via Flask-Babel?
+* Flask-SQLAlchemy support?
+* bootstrap css and js should go under 'bootstrap' subdir? what about img?
